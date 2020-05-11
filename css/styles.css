@@ -60,10 +60,11 @@ body{
     box-shadow: cyan 1px 1px 1px;
 }
 
-  input {width: 85%;} 
+  input {width: 80%;} 
   input,  button {padding: 1%;}
   button {
       width: 10%;
       margin-left: 1%;
+      overflow: auto;
     
   }
