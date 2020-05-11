@@ -10,8 +10,8 @@ doc.getElementById("txtFind").onkeydown = (event)=>{
     console.log(q);
     for(let i = 0; i < myres.length;i++){
      
-      if(myres[i].name.match(q)!= null && myres[i].name.match(q)!= "#"){
-          console.log(myres[i].name);
+      if(myres[i].property_type.match(q)!= null && myres[i].property_type.match(q)!= "#"){
+         // console.log(myres[i].name);
           myProducts+= "<div id='boxProduct'>"+
                              "<div class='boxProductImage'><img style='width: 100%;' src='"+ myres[i].photo + "'/></div>"+
                               "<div class='boxProductText'><p><strong>"+myres[i].property_type + 
@@ -41,8 +41,8 @@ doc.getElementById("btnFind").onclick = (event)=>{
     console.log(q);
     for(let i = 0; i < myres.length;i++){
      
-      if(myres[i].name.match(q)!= null && myres[i].name.match(q)!= "#"){
-          console.log(myres[i].name);
+      if(myres[i].property_type.match(q)!= null && myres[i].property_type.match(q)!= "#"){
+         // console.log(myres[i].name);
           myProducts+= "<div id='boxProduct'>"+
                              "<div class='boxProductImage'><img style='width: 100%;' src='"+ myres[i].photo + "'/></div>"+
                               "<div class='boxProductText'><p><strong>"+myres[i].property_type + 
