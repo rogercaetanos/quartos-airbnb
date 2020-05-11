@@ -1,5 +1,67 @@
 (function readyJS(win,doc){
 'use strict';
+let myres = '';
+let myProducts = '';
+doc.getElementById("txtFind").onkeydown = (event)=>{
+  doc.getElementById("boxProducts").innerHTML = "";
+  myProducts = '';
+  if(event.keyCode == 13){
+    let q = doc.getElementById("txtFind").value == ""?"#":doc.getElementById("txtFind").value;
+    console.log(q);
+    for(let i = 0; i < myres.length;i++){
+     
+      if(myres[i].name.match(q)!= null && myres[i].name.match(q)!= "#"){
+          console.log(myres[i].name);
+          myProducts+= "<div id='boxProduct'>"+
+                             "<div class='boxProductImage'><img style='width: 100%;' src='"+ myres[i].photo + "'/></div>"+
+                              "<div class='boxProductText'><p><strong>"+myres[i].property_type + 
+                              "</strong> "+(myres[i].price).toLocaleString('pt-BR',{ style: 'currency', currency: 'BRL' })+"</p><p>"+ 
+                                            myres[i].name + "</p></div></div>"; 
+      }else if(q == "#"){
+        myProducts+= "<div id='boxProduct'>"+
+        "<div class='boxProductImage'><img style='width: 100%;' src='"+ myres[i].photo + "'/></div>"+
+         "<div class='boxProductText'><p><strong>"+myres[i].property_type + 
+         "</strong> "+(myres[i].price).toLocaleString('pt-BR',{ style: 'currency', currency: 'BRL' })+"</p><p>"+ 
+                       myres[i].name + "</p></div></div>"; 
+      }
+    }
+    doc.getElementById("boxProducts").innerHTML = myProducts;
+    //var idx = myres[0].name.match(q);
+    //alert(idx);
+  }
+   
+};
+
+doc.getElementById("btnFind").onclick = (event)=>{
+  
+  doc.getElementById("boxProducts").innerHTML = "";
+  myProducts = '';
+  
+    let q = doc.getElementById("txtFind").value == ""?"#":doc.getElementById("txtFind").value;
+    console.log(q);
+    for(let i = 0; i < myres.length;i++){
+     
+      if(myres[i].name.match(q)!= null && myres[i].name.match(q)!= "#"){
+          console.log(myres[i].name);
+          myProducts+= "<div id='boxProduct'>"+
+                             "<div class='boxProductImage'><img style='width: 100%;' src='"+ myres[i].photo + "'/></div>"+
+                              "<div class='boxProductText'><p><strong>"+myres[i].property_type + 
+                              "</strong> "+(myres[i].price).toLocaleString('pt-BR',{ style: 'currency', currency: 'BRL' })+"</p><p>"+ 
+                                            myres[i].name + "</p></div></div>"; 
+      }else if(q == "#"){
+        myProducts+= "<div id='boxProduct'>"+
+        "<div class='boxProductImage'><img style='width: 100%;' src='"+ myres[i].photo + "'/></div>"+
+         "<div class='boxProductText'><p><strong>"+myres[i].property_type + 
+         "</strong> "+(myres[i].price).toLocaleString('pt-BR',{ style: 'currency', currency: 'BRL' })+"</p><p>"+ 
+                       myres[i].name + "</p></div></div>"; 
+      }
+    }
+    doc.getElementById("boxProducts").innerHTML = myProducts;
+    
+};
+
+
+
   // Set up our HTTP request
 var xhr = new XMLHttpRequest();
 
@@ -14,7 +76,11 @@ xhr.onload = function () {
        if(xhr.status === 200 && xhr.readyState === 4){
            console.log('Tudo Ok');
            let res = JSON.parse(xhr.responseText);
-           console.log(res);
+         //  console.log(res);
+            myres = [...res];
+           console.log(myres);
+          
+
            let products = '';
            for(let i = 0; i < res.length;i++){
                if(i % 3 == 0){
@@ -35,9 +101,7 @@ xhr.onload = function () {
 		console.log('The request failed!');
 	}
 
-	// This will run either way
-	// All three of these are optional, depending on what you're trying to do
-	console.log('This always runs...');
+
 };
 
 // Create and send a GET request
